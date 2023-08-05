@@ -48,26 +48,26 @@ void loop () {
   }
 
   if (is_read && now - start > 10000) {
-    Serial.println ("Transmittion is finished");
+    //Serial.println ("Transmittion is finished");
     is_read = false;
 
     for (int i = 0; i < index; i++) {
-      Serial.print (durations [i]);
-      Serial.print (" ");
+      //Serial.print (durations [i]);
+      //Serial.print (" ");
       if (i > 0 && i % 8 == 0) {
-          Serial.print ("| ");
+          //Serial.print ("| ");
       }
     }
-    Serial.println ();
+    //Serial.println ();
     
     for (int i = 0; i < index; i++) {
-      Serial.print (aligned_duration (durations [i]));
-      Serial.print (" ");
+      //Serial.print (aligned_duration (durations [i]));
+      //Serial.print (" ");
       if (i > 0 && i % 8 == 0) {
-          Serial.print ("| ");
+          //Serial.print ("| ");
       }
     }
-    Serial.println ();
+    //Serial.println ();
 
     char *buffer = malloc ((index / 8) * sizeof (char) + 1);
     buffer [(index / 8) * sizeof (char)] = 0; // Stop bit
@@ -77,11 +77,11 @@ void loop () {
         c = (c << 1) | ((aligned_duration (durations [b * 8 + i]) / precision - 1) & 1);
       }
 
-      Serial.print ((int) c);
-      Serial.print (" ");
+      //Serial.print ((int) c);
+      //Serial.print (" ");
       buffer [b] = c;
     }
-    Serial.println ();
+    //Serial.println ();
 
     Serial.println (String (buffer));
     free (buffer);
